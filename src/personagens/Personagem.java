@@ -8,11 +8,10 @@ public abstract class Personagem {
 
     private final String nome;
     protected int pontosDeVida = 500;
-    protected final int forca;
+    protected final int forca = 250;
 
-    public Personagem(String nome, int forca) {
+    public Personagem(String nome) {
         this.nome = nome;
-        this.forca = forca;
     }
 
     public abstract void takeDemage();

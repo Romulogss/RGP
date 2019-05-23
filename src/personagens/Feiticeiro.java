@@ -8,8 +8,8 @@ public class Feiticeiro extends Mago {
 
     private final String pocoes;
 
-    public Feiticeiro(String pocoes, int mana, String nome, int forca) {
-        super(mana, nome, forca);
+    public Feiticeiro(String pocoes, int mana, String nome) {
+        super(mana, nome);
         this.pocoes = pocoes;
     }
 

@@ -8,8 +8,8 @@ public class Arqueiro extends Guerreiro {
 
     private final String atque;
 
-    public Arqueiro(String atque, int forca, int agilidade, String nome) {
-        super(forca, agilidade, nome);
+    public Arqueiro(String atque, int agilidade, String nome) {
+        super(agilidade, nome);
         this.atque = atque;
     }
 

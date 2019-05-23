@@ -8,8 +8,9 @@ public class Mago extends Personagem {
 
     private final int mana;
 
-    public Mago(int mana, String nome, int forca) {
-        super(nome, forca);
+    
+    public Mago(int mana, String nome) {
+        super(nome);
         this.mana = mana;
     }
 

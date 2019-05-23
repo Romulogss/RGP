@@ -8,8 +8,8 @@ public class Guerreiro extends Personagem {
 
     private final int destreza;
 
-    public Guerreiro(int forca, int destreza, String nome) {
-        super(nome, forca);
+    public Guerreiro(int destreza, String nome) {
+        super(nome);
         this.destreza = destreza;
     }
 
@@ -24,7 +24,7 @@ public class Guerreiro extends Personagem {
         dano = feiticeiro.forca * .05;
         pontosDeVida -= dano;
     }
-    
+
     public void takeDemage(Aprendiz aprendiz) {
         double dano;
         dano = aprendiz.forca * .1;
@@ -36,19 +36,19 @@ public class Guerreiro extends Personagem {
         dano = guerreiro.forca * .1;
         pontosDeVida -= dano;
     }
-    
+
     public void takeDemage(Arqueiro arqueiro) {
         double dano;
         dano = arqueiro.forca * .08;
         pontosDeVida -= dano;
     }
-    
+
     public void takeDemage(Soldado soldado) {
         double dano;
         dano = soldado.forca * .1;
         pontosDeVida -= dano;
     }
-    
+
     @Override
     public int getForca() {
         return forca;

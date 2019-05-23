@@ -8,8 +8,8 @@ public class Aprendiz extends Mago {
 
     private final String pet;
 
-    public Aprendiz(String pet, int mana, String nome, int forca) {
-        super(mana, nome, forca);
+    public Aprendiz(String pet, int mana, String nome) {
+        super(mana, nome);
         this.pet = pet;
     }
 

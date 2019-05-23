@@ -8,8 +8,8 @@ public class Soldado extends Guerreiro {
 
     private final String armadura;
 
-    public Soldado(String armadura, int forca, int agilidade, String nome) {
-        super(forca, agilidade, nome);
+    public Soldado(String armadura, int agilidade, String nome) {
+        super(agilidade, nome);
         this.armadura = armadura;
     }
 
