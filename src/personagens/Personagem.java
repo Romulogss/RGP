@@ -3,36 +3,18 @@ package personagens;
 /**
  *
  * @author Rômulo
+ * @param <T>
  */
-public abstract class Personagem {
+public interface Personagem<T> {
 
-    private final String nome;
-    protected int pontosDeVida = 500;
-    protected final int forca = 250;
-
-    public Personagem(String nome) {
-        this.nome = nome;
-    }
-
-    public abstract void takeDemage();
-
-    public String getNome() {
-        return nome;
-    }
-
-    public int getPontosDeVida() {
-        return pontosDeVida;
-    }
-
-    public int getForca() {
-        return forca;
-    }
-
+    public abstract void takeDemage(T o);
+    public String getNome();
+    public double getPontosDeVida();
+    public double getForca();
+    public double ataqueEspecial();
+    public void danoEspecial(double ataqueEspecial);
+    public void getArma();
     @Override
-    public String toString() {
-        return "Personagem{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + '}';
-    }
-    
-    
+    public String toString();
 
 }

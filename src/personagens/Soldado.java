@@ -6,52 +6,54 @@ package personagens;
  */
 public class Soldado extends Guerreiro {
 
+    private double pontosDeVida = 500;
     private final String armadura;
+    private final int defesa = 150;
 
-    public Soldado(String armadura, int agilidade, String nome) {
-        super(agilidade, nome);
+    public Soldado(String nome, String armadura) {
+        super(nome);
         this.armadura = armadura;
     }
 
     @Override
     public void takeDemage(Mago mago) {
         double dano;
-        dano = mago.forca * .05;
+        dano = (mago.getForca() * .05) - (defesa * .5);
         pontosDeVida -= dano;
     }
 
     @Override
     public void takeDemage(Feiticeiro feiticeiro) {
         double dano;
-        dano = feiticeiro.forca * .05;
+        dano = (feiticeiro.getForca() * .05) - (defesa * .5);
         pontosDeVida -= dano;
     }
 
     @Override
     public void takeDemage(Aprendiz aprendiz) {
         double dano;
-        dano = aprendiz.forca * .1;
+        dano = (aprendiz.getForca() * .1) - (defesa * .5);
         pontosDeVida -= dano;
     }
 
     @Override
     public void takeDemage(Guerreiro guerreiro) {
         double dano;
-        dano = guerreiro.forca * .1;
+        dano = (guerreiro.getForca() * .1) - (defesa * .5);
         pontosDeVida -= dano;
     }
 
     @Override
     public void takeDemage(Arqueiro arqueiro) {
         double dano;
-        dano = arqueiro.forca * .08;
+        dano = (arqueiro.getForca() * .08) - (defesa * .5);
         pontosDeVida -= dano;
     }
 
     @Override
     public void takeDemage(Soldado soldado) {
         double dano;
-        dano = soldado.forca * .1;
+        dano = (soldado.getForca() * .1) - (defesa * .5);
         pontosDeVida -= dano;
     }
 
@@ -60,11 +62,33 @@ public class Soldado extends Guerreiro {
     }
 
     @Override
-    public int getPontosDeVida() {
+    public double getPontosDeVida() {
         return pontosDeVida;
     }
 
-    public void takeDemage(int ataque) {
-        pontosDeVida -= ataque;
+    @Override
+    public void danoEspecial(double ataqueEspecial) {
+        pontosDeVida -= ataqueEspecial;
     }
+
+    @Override
+    public double ataqueEspecial() {
+        System.out.println("Minha armadura " + getArmadura() + " aumenta meu poder, sofra com meu ataque especial!");
+        return getForca() * 1.5;
+    }
+
+    @Override
+    public void getArma() {
+        System.out.println("Minha espada leve é uma arma e poderosa, e minha armadura me fortalece!");
+    }
+
+    public int getDefesa() {
+        return defesa;
+    }
+
+    @Override
+    public String toString() {
+        return "Soldado{" + "nome=" + super.getNome() + ", pontosDeVida=" + pontosDeVida + ", armadura=" + armadura + ", defesa=" + defesa + '}';
+    }
+
 }
