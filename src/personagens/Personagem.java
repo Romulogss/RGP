@@ -8,12 +8,12 @@ package personagens;
 public interface Personagem<T> {
 
     public abstract void takeDemage(T o);
-    public String getNome();
-    public double getPontosDeVida();
-    public double getForca();
-    public double ataqueEspecial();
-    public void danoEspecial(double ataqueEspecial);
-    public void getArma();
+    public abstract  String getNome();
+    public abstract double getPontosDeVida();
+    public abstract double getForca();
+    public abstract double ataqueEspecial();
+    public abstract void danoEspecial(double ataqueEspecial);
+    public abstract void getArma();
     @Override
     public String toString();
 

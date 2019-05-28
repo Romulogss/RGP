@@ -15,48 +15,6 @@ public class Soldado extends Guerreiro {
         this.armadura = armadura;
     }
 
-    @Override
-    public void takeDemage(Mago mago) {
-        double dano;
-        dano = (mago.getForca() * .05) - (defesa * .5);
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Feiticeiro feiticeiro) {
-        double dano;
-        dano = (feiticeiro.getForca() * .05) - (defesa * .5);
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Aprendiz aprendiz) {
-        double dano;
-        dano = (aprendiz.getForca() * .1) - (defesa * .5);
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Guerreiro guerreiro) {
-        double dano;
-        dano = (guerreiro.getForca() * .1) - (defesa * .5);
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Arqueiro arqueiro) {
-        double dano;
-        dano = (arqueiro.getForca() * .08) - (defesa * .5);
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Soldado soldado) {
-        double dano;
-        dano = (soldado.getForca() * .1) - (defesa * .5);
-        pontosDeVida -= dano;
-    }
-
     public String getArmadura() {
         return armadura;
     }

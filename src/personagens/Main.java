@@ -7,12 +7,9 @@ package personagens;
 public class Main {
 
     public static void main(String[] args) {
-        Mago mago = new Mago("Romulo");
-        Feiticeiro feiticeiro = new Feiticeiro("Gabriel", "vida");
-        System.out.println(mago.getNome());
-        System.out.println(feiticeiro);
-        System.out.println(mago.getNome());
-        
+        Arqueiro guerreiro = new Arqueiro("Romulo", "Dança das flechas!");
+        Aprendiz aprendiz = new Aprendiz("Gandf", "drogon");
+        guerreiro.takeDemage(aprendiz);
     }
 
 }

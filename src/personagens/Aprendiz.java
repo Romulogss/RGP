@@ -1,5 +1,8 @@
 package personagens;
 
+import armas.Arma;
+import armas.Cajado;
+
 /**
  *
  * @author Rômulo
@@ -10,10 +13,12 @@ public class Aprendiz extends Mago {
     private final double forca = 250;
     private final int mana = 150;
     private final String pet;
+    private Arma arma;
 
     public Aprendiz(String nome, String pet) {
         super(nome);
         this.pet = pet;
+        arma = new Cajado();
     }
 
     public String getPet() {
@@ -25,23 +30,19 @@ public class Aprendiz extends Mago {
         return pontosDeVida;
     }
 
-    public void takeDemage(int ataque) {
-        pontosDeVida -= ataque;
-    }
-
     @Override
     public double getForca() {
-        return forca * (mana * .25);
+        return forca + (mana * .25);
     }
 
     @Override
     public void danoEspecial(double ataqueEspecial) {
         pontosDeVida -= ataqueEspecial;
     }
-    
+
     @Override
-    public void getArma(){
-        System.out.println("Não possuo arma, mas minha habilidade de atestrar criaturas místicas é mais forte que qualquer arma!");
+    public void getArma() {
+        System.out.println();
     }
 
     @Override

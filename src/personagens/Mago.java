@@ -1,55 +1,28 @@
 package personagens;
 
+import armas.Arma;
+import armas.Cajado;
+
 /**
  *
  * @author Rômulo
  */
-public class Mago implements Personagem<Mago> {
+public class Mago implements Personagem<Personagem> {
 
     private final String nome;
     private double pontosDeVida = 500;
     private final double forca = 250;
     private final int mana = 150;
+    Arma arma;
 
     public Mago(String nome) {
         this.nome = nome;
+        arma = new Cajado();
     }
 
     @Override
-    public void takeDemage(Mago mago) {
-        double dano;
-        dano = mago.getForca() * .1;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Feiticeiro feiticeiro) {
-        double dano;
-        dano = feiticeiro.getForca() * .08;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Aprendiz aprendiz) {
-        double dano;
-        dano = aprendiz.getForca() * .05;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Guerreiro guerreiro) {
-        double dano;
-        dano = guerreiro.getForca() * .2;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Arqueiro arqueiro) {
-        double dano;
-        dano = arqueiro.getForca() * .12;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Soldado soldado) {
-        double dano;
-        dano = soldado.getForca() * .15;
-        pontosDeVida -= dano;
+    public void takeDemage(Personagem personagem) {
+        pontosDeVida -= personagem.getForca();
     }
 
     public int getMana() {
@@ -89,7 +62,7 @@ public class Mago implements Personagem<Mago> {
 
     @Override
     public String toString() {
-        return "Mago{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", mana=" + mana + '}';
+        return "Mago{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", mana=" + mana + ", arma=" + arma.toString() + '}';
     }
 
 }

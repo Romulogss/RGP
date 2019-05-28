@@ -1,55 +1,23 @@
 package personagens;
 
+import armas.Arma;
+import armas.Espada;
+
 /**
  *
  * @author Rômulo
  */
-public class Guerreiro implements Personagem<Guerreiro> {
+public class Guerreiro implements Personagem<Personagem> {
 
     private final String nome;
     private double pontosDeVida = 500;
     private final int forca = 300;
     private final int destreza = 150;
+    private final Arma arma;
 
     public Guerreiro(String nome) {
         this.nome = nome;
-    }
-
-    public void takeDemage(Mago mago) {
-        double dano;
-        dano = mago.getForca() * .05;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Feiticeiro feiticeiro) {
-        double dano;
-        dano = feiticeiro.getForca() * .05;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Aprendiz aprendiz) {
-        double dano;
-        dano = aprendiz.getForca() * .1;
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Guerreiro guerreiro) {
-        double dano;
-        dano = guerreiro.getForca() * .1;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Arqueiro arqueiro) {
-        double dano;
-        dano = arqueiro.getForca() * .08;
-        pontosDeVida -= dano;
-    }
-
-    public void takeDemage(Soldado soldado) {
-        double dano;
-        dano = soldado.getForca() * .1;
-        pontosDeVida -= dano;
+        arma = new Espada();
     }
 
     @Override
@@ -67,9 +35,9 @@ public class Guerreiro implements Personagem<Guerreiro> {
     public double getForca() {
         return forca + (destreza * .5);
     }
-    
+
     @Override
-    public void getArma(){
+    public void getArma() {
         System.out.println("Minha espada pesada é uma arma poderosa!");
     }
 
@@ -83,10 +51,18 @@ public class Guerreiro implements Personagem<Guerreiro> {
         return nome;
     }
 
+    public String getTipoDeArma() {
+        return arma.toString();
+    }
+
+    @Override
+    public void takeDemage(Personagem personagem) {
+        pontosDeVida -= personagem.getForca();
+    }
+
     @Override
     public String toString() {
-        return "Guerreiro{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", destreza=" + destreza + '}';
+        return "Guerreiro{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", destreza=" + destreza + ", arma=" + arma.toString() + '}';
     }
-    
-    
+
 }

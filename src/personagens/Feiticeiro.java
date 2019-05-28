@@ -16,48 +16,6 @@ public class Feiticeiro extends Mago {
         this.pocoes = pocoes;
     }
 
-    @Override
-    public void takeDemage(Mago mago) {
-        double dano;
-        dano = mago.getForca() * .15;
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Feiticeiro feiticeiro) {
-        double dano;
-        dano = feiticeiro.getForca() * .1;
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Aprendiz aprendiz) {
-        double dano;
-        dano = aprendiz.getForca() * .08;
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Guerreiro guerreiro) {
-        double dano;
-        dano = guerreiro.getForca() * .13;
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Arqueiro arqueiro) {
-        double dano;
-        dano = arqueiro.getForca() * .12;
-        pontosDeVida -= dano;
-    }
-
-    @Override
-    public void takeDemage(Soldado soldado) {
-        double dano;
-        dano = soldado.getForca() * .15;
-        pontosDeVida -= dano;
-    }
-
     public String getPocoes() {
         return pocoes;
     }
