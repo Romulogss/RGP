@@ -1,5 +1,8 @@
 package personagens;
 
+import armas.Arma;
+import armas.Cajado;
+
 /**
  *
  * @author Rômulo
@@ -7,13 +10,13 @@ package personagens;
 public class Feiticeiro extends Mago {
 
     private double pontosDeVida = 500;
-    private final double forca = 250;
-    private final int mana = 150;
     private final String pocoes;
+    private final Arma arma;
 
     public Feiticeiro(String nome, String pocoes) {
         super(nome);
         this.pocoes = pocoes;
+        arma = new Cajado();
     }
 
     public String getPocoes() {
@@ -30,16 +33,6 @@ public class Feiticeiro extends Mago {
     }
 
     @Override
-    public void getArma() {
-        System.out.println("Meu fracos de poções é uma arma incrível que me deixa capaz de fazer poções místicas com quase qualquer ingrediente!");
-    }
-
-    @Override
-    public double getForca() {
-        return forca;
-    }
-
-    @Override
     public void danoEspecial(double ataqueEspecial) {
         pontosDeVida -= ataqueEspecial;
     }
@@ -52,7 +45,9 @@ public class Feiticeiro extends Mago {
 
     @Override
     public String toString() {
-        return "Feiticeiro{" + "nome=" + super.getNome() + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", mana=" + mana + ", pocoes=" + pocoes + '}';
+        return "Feiticeiro{" + "nome=" + super.getNome() + ", pontosDeVida="
+                + pontosDeVida + ", força=" + super.getForca() + ", mana=" + super.getMana()
+                + ", pocoes=" + pocoes + ", arma= " + arma.toString() + '}';
     }
 
 }

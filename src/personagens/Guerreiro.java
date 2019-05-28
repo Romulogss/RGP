@@ -37,11 +37,6 @@ public class Guerreiro implements Personagem<Personagem> {
     }
 
     @Override
-    public void getArma() {
-        System.out.println("Minha espada pesada é uma arma poderosa!");
-    }
-
-    @Override
     public double getPontosDeVida() {
         return pontosDeVida;
     }
@@ -51,6 +46,7 @@ public class Guerreiro implements Personagem<Personagem> {
         return nome;
     }
 
+    @Override
     public String getTipoDeArma() {
         return arma.toString();
     }
@@ -62,7 +58,8 @@ public class Guerreiro implements Personagem<Personagem> {
 
     @Override
     public String toString() {
-        return "Guerreiro{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", destreza=" + destreza + ", arma=" + arma.toString() + '}';
+        return "Guerreiro{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida
+                + ", força=" + forca + ", destreza=" + destreza
+                + ", arma=" + arma.toString() + '}';
     }
-
 }

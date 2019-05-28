@@ -13,7 +13,7 @@ public class Mago implements Personagem<Personagem> {
     private double pontosDeVida = 500;
     private final double forca = 250;
     private final int mana = 150;
-    Arma arma;
+    private final Arma arma;
 
     public Mago(String nome) {
         this.nome = nome;
@@ -46,8 +46,8 @@ public class Mago implements Personagem<Personagem> {
     }
 
     @Override
-    public void getArma() {
-        System.out.println("Meu cajado divino é arma mística que me torna um ser acima do Humano!");
+    public String getTipoDeArma() {
+        return arma.toString();
     }
 
     @Override
@@ -62,7 +62,9 @@ public class Mago implements Personagem<Personagem> {
 
     @Override
     public String toString() {
-        return "Mago{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", mana=" + mana + ", arma=" + arma.toString() + '}';
+        return "Mago{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida
+                + ", força=" + forca + ", mana=" + mana
+                + ", arma=" + arma.toString() + '}';
     }
-
+    
 }

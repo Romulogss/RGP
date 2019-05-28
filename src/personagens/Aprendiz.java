@@ -41,11 +41,6 @@ public class Aprendiz extends Mago {
     }
 
     @Override
-    public void getArma() {
-        System.out.println();
-    }
-
-    @Override
     public double ataqueEspecial() {
         System.out.println("Meu pet " + getPet() + " me ajuda a atacar!\nSofra com nosso ataque!");
         return getForca() * 1.5;
@@ -53,7 +48,9 @@ public class Aprendiz extends Mago {
 
     @Override
     public String toString() {
-        return "Aprendiz{" + "nome=" + super.getNome() + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", mana=" + mana + ", pet=" + pet + '}';
+        return "Aprendiz{" + "nome=" + super.getNome() + ", pontosDeVida="
+                + pontosDeVida + ", força=" + forca + ", mana=" + mana
+                + ", pet=" + pet + ", arma=" + arma.toString() + '}';
     }
 
 }

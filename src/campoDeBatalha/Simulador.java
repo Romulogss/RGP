@@ -15,7 +15,7 @@ import personagens.Soldado;
  */
 public class Simulador {
 
-    public static int escolherClass(Scanner ler) {
+    public static int escolherClasse(Scanner ler) {
         System.out.println("Escolha uma classe para jogar");
         System.out.println("1 - Guerreiro");
         System.out.println("2 - Soldado");
@@ -69,7 +69,7 @@ public class Simulador {
         Scanner ler = new Scanner(System.in);
         System.out.println("Jogador 1!");
         do {
-            escolha = escolherClass(ler);
+            escolha = escolherClasse(ler);
             System.out.print("Escolha o nome do seu personagem: ");
             nome = ler.nextLine();
             Personagem personagem1 = escolherPersonagem(nome, escolha);
@@ -80,7 +80,7 @@ public class Simulador {
 
         System.out.println("Jogador 2!");
         do {
-            escolha = escolherClass(ler);
+            escolha = escolherClasse(ler);
             System.out.print("Escolha o nome do seu personagem: ");
             nome = ler.nextLine();
             Personagem personagem2 = escolherPersonagem(nome, escolha);
@@ -88,6 +88,8 @@ public class Simulador {
             System.out.println("Deseja trocar de personagem?\n[S/N]");
             loop = ler.nextLine().toLowerCase().charAt(0);
         } while (loop == 's');
+        
+        
 
     }
 }

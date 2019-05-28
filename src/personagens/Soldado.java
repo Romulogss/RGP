@@ -1,5 +1,8 @@
 package personagens;
 
+import armas.Arma;
+import armas.Espada;
+
 /**
  *
  * @author Rômulo
@@ -9,10 +12,12 @@ public class Soldado extends Guerreiro {
     private double pontosDeVida = 500;
     private final String armadura;
     private final int defesa = 150;
+    private final Arma arma;
 
     public Soldado(String nome, String armadura) {
         super(nome);
         this.armadura = armadura;
+        arma = new Espada();
     }
 
     public String getArmadura() {
@@ -36,8 +41,8 @@ public class Soldado extends Guerreiro {
     }
 
     @Override
-    public void getArma() {
-        System.out.println("Minha espada leve é uma arma e poderosa, e minha armadura me fortalece!");
+    public void takeDemage(Personagem personagem) {
+        pontosDeVida -= personagem.getForca() - (.2 * defesa);
     }
 
     public int getDefesa() {
@@ -46,7 +51,9 @@ public class Soldado extends Guerreiro {
 
     @Override
     public String toString() {
-        return "Soldado{" + "nome=" + super.getNome() + ", pontosDeVida=" + pontosDeVida + ", armadura=" + armadura + ", defesa=" + defesa + '}';
+        return "Soldado{" + "nome=" + super.getNome() + ", pontosDeVida="
+                + pontosDeVida + ", força" + super.getForca() + ", armadura=" + armadura
+                + ", defesa=" + defesa + ", arma=" + arma.toString() + '}';
     }
 
 }

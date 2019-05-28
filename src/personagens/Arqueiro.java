@@ -1,5 +1,8 @@
 package personagens;
 
+import armas.Arco;
+import armas.Arma;
+
 /**
  *
  * @author Rômulo
@@ -10,10 +13,12 @@ public class Arqueiro extends Guerreiro {
     private final double forca = 300;
     private final double agilidade = 150;
     private final String ataque;
+    private final Arma arma;
 
     public Arqueiro(String nome, String ataque) {
         super(nome);
         this.ataque = ataque;
+        arma = new Arco();
     }
 
     @Override
@@ -42,13 +47,11 @@ public class Arqueiro extends Guerreiro {
     }
 
     @Override
-    public void getArma() {
-        System.out.println("Meu arco e flecha é uma arma incrivelmente ágil e poderosa!");
-    }
-
-    @Override
     public String toString() {
-        return "Arqueiro{" + "nome=" + super.getNome() + ", pontosDeVida=" + pontosDeVida + ", forca=" + forca + ", agilidade=" + agilidade + ", atque=" + ataque + '}';
+        return "Arqueiro{" + "nome=" + super.getNome() + ", pontosDeVida="
+                + pontosDeVida + ", força=" + getForca()
+                + ", agilidade=" + agilidade + ", atque=" + ataque
+                + ", arma=" + arma.toString() + '}';
     }
 
 }
