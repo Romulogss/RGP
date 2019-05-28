@@ -2,7 +2,7 @@ package armas;
 
 /**
  *
- * @author BPMLAB04
+ * @author Rômulo
  */
 public class TesteArmas {
 
