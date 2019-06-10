@@ -42,7 +42,7 @@ public class Soldado extends Guerreiro {
 
     @Override
     public void takeDemage(Personagem personagem) {
-        pontosDeVida -= personagem.atacar() - personagem.getDefesa();
+        pontosDeVida -= personagem.atacar() / personagem.getDefesa();
     }
 
     @Override

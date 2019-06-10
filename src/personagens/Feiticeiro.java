@@ -41,7 +41,7 @@ public class Feiticeiro extends Mago {
     
     @Override
     public void takeDemage(Personagem personagem) {
-        pontosDeVida -= personagem.atacar() - personagem.getDefesa();
+        pontosDeVida -= personagem.atacar() / personagem.getDefesa();
     }
 
     @Override
