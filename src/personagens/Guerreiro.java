@@ -13,7 +13,8 @@ public class Guerreiro implements Personagem<Personagem> {
     private double pontosDeVida = 500;
     private final int forca = 300;
     private final int destreza = 150;
-    private final Arma arma;
+    private Arma arma;
+    private final int defesa = 100;
 
     public Guerreiro(String nome) {
         this.nome = nome;
@@ -28,12 +29,32 @@ public class Guerreiro implements Personagem<Personagem> {
     @Override
     public double ataqueEspecial() {
         System.out.println("Sofra com meu ataque especial!");
-        return getForca() * 1.5;
+        return atacar() * 1.5;
+    }
+
+    @Override
+    public double getDefesa() {
+        return defesa * .25;
     }
 
     @Override
     public double getForca() {
-        return forca + (destreza * .5);
+        return (forca * .2) + (destreza * .25) + arma.getDano();
+    }
+
+    @Override
+    public double atacar() {
+        double dano;
+        try {
+            dano = (forca * .2) + (destreza * .25) + arma.getDano();
+            arma.usada();
+            if (arma.getCicloDeVida() <= 0) {
+                arma = null;
+            }
+        } catch (Exception NullPointerException) {
+            dano = (forca * .2) + (destreza * .25);
+        }
+        return dano;
     }
 
     @Override
@@ -53,13 +74,13 @@ public class Guerreiro implements Personagem<Personagem> {
 
     @Override
     public void takeDemage(Personagem personagem) {
-        pontosDeVida -= personagem.getForca();
+        pontosDeVida -= personagem.atacar() / personagem.getDefesa();
     }
 
     @Override
     public String toString() {
         return "Guerreiro{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida
-                + ", força=" + forca + ", destreza=" + destreza
+                + ", força=" + getForca() + ", destreza=" + destreza
                 + ", arma=" + arma.toString() + '}';
     }
 }

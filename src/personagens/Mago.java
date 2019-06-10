@@ -13,7 +13,8 @@ public class Mago implements Personagem<Personagem> {
     private double pontosDeVida = 500;
     private final double forca = 250;
     private final int mana = 150;
-    private final Arma arma;
+    private Arma arma;
+    private final int defesa = 100;
 
     public Mago(String nome) {
         this.nome = nome;
@@ -22,7 +23,12 @@ public class Mago implements Personagem<Personagem> {
 
     @Override
     public void takeDemage(Personagem personagem) {
-        pontosDeVida -= personagem.getForca();
+        pontosDeVida -= personagem.atacar() / personagem.getDefesa();
+    }
+    
+    @Override
+    public double getDefesa() {
+        return defesa * .25;
     }
 
     public int getMana() {
@@ -37,7 +43,7 @@ public class Mago implements Personagem<Personagem> {
     @Override
     public double ataqueEspecial() {
         System.out.println("O mago é implacável!\nSofra!");
-        return getForca() * 1.5;
+        return atacar() * 1.5;
     }
 
     @Override
@@ -57,14 +63,29 @@ public class Mago implements Personagem<Personagem> {
 
     @Override
     public double getForca() {
-        return forca * (mana * .5);
+        return (forca * .2) + (mana * .25) + arma.getDano();
+    }
+    
+    @Override
+    public double atacar(){
+        double dano;
+        try {
+            dano = (forca * .2) + (mana * .25) + arma.getDano();
+            arma.usada();
+            if (arma.getCicloDeVida() <= 0) {
+                arma = null;
+            }
+        } catch (Exception NullPointerException) {
+            dano = (forca * .2) + (mana * .25);
+        }
+        return dano;
     }
 
     @Override
     public String toString() {
         return "Mago{" + "nome=" + nome + ", pontosDeVida=" + pontosDeVida
-                + ", força=" + forca + ", mana=" + mana
+                + ", força=" + getForca() + ", mana=" + mana
                 + ", arma=" + arma.toString() + '}';
     }
-    
+
 }

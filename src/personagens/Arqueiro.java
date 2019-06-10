@@ -10,10 +10,10 @@ import armas.Arma;
 public class Arqueiro extends Guerreiro {
 
     private double pontosDeVida = 500;
-    private final double forca = 300;
+    private final double forca = 250;
     private final double agilidade = 150;
     private final String ataque;
-    private final Arma arma;
+    private Arma arma;
 
     public Arqueiro(String nome, String ataque) {
         super(nome);
@@ -24,7 +24,7 @@ public class Arqueiro extends Guerreiro {
     @Override
     public double ataqueEspecial() {
         System.out.println("Sofra meu ataque!\n" + this.ataque);
-        return getForca() * 1.5;
+        return atacar() * 1.5;
     }
 
     public String getAtque() {
@@ -32,8 +32,23 @@ public class Arqueiro extends Guerreiro {
     }
 
     @Override
-    public void danoEspecial(double ataqueEspecial) {
-        pontosDeVida -= ataqueEspecial;
+    public double atacar() {
+        double dano;
+        try {
+            dano = (forca * .2) + (agilidade * .25) + arma.getDano();
+            arma.usada();
+            if (arma.getCicloDeVida() <= 0) {
+                arma = null;
+            }
+        } catch (Exception NullPointerException) {
+            dano = (forca * .2) + (agilidade * .25);
+        }
+        return dano;
+    }
+
+    @Override
+    public double getForca() {
+        return (forca * .2) + (agilidade * .25) + arma.getDano();
     }
 
     @Override
@@ -42,14 +57,14 @@ public class Arqueiro extends Guerreiro {
     }
 
     @Override
-    public double getForca() {
-        return forca * agilidade * .2;
+    public void takeDemage(Personagem personagem) {
+        pontosDeVida -= personagem.atacar() - personagem.getDefesa();
     }
 
     @Override
     public String toString() {
         return "Arqueiro{" + "nome=" + super.getNome() + ", pontosDeVida="
-                + pontosDeVida + ", força=" + getForca()
+                + super.getPontosDeVida() + ", força=" + getForca()
                 + ", agilidade=" + agilidade + ", atque=" + ataque
                 + ", arma=" + arma.toString() + '}';
     }

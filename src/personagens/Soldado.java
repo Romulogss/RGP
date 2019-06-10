@@ -37,16 +37,17 @@ public class Soldado extends Guerreiro {
     @Override
     public double ataqueEspecial() {
         System.out.println("Minha armadura " + getArmadura() + " aumenta meu poder, sofra com meu ataque especial!");
-        return getForca() * 1.5;
+        return atacar() * 1.5;
     }
 
     @Override
     public void takeDemage(Personagem personagem) {
-        pontosDeVida -= personagem.getForca() - (.2 * defesa);
+        pontosDeVida -= personagem.atacar() - personagem.getDefesa();
     }
 
-    public int getDefesa() {
-        return defesa;
+    @Override
+    public double getDefesa() {
+        return defesa * .25;
     }
 
     @Override

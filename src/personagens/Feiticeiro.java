@@ -28,10 +28,6 @@ public class Feiticeiro extends Mago {
         return pontosDeVida;
     }
 
-    public void takeDemage(int ataque) {
-        pontosDeVida -= ataque;
-    }
-
     @Override
     public void danoEspecial(double ataqueEspecial) {
         pontosDeVida -= ataqueEspecial;
@@ -40,7 +36,12 @@ public class Feiticeiro extends Mago {
     @Override
     public double ataqueEspecial() {
         System.out.println("Minha poção " + getPocoes() + " aumenta meu ataque!\nSofra com meu ataque!");
-        return getForca() * 1.5;
+        return atacar() * 1.5;
+    }
+    
+    @Override
+    public void takeDemage(Personagem personagem) {
+        pontosDeVida -= personagem.atacar() - personagem.getDefesa();
     }
 
     @Override

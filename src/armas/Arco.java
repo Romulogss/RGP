@@ -11,9 +11,11 @@ public class Arco extends Arma {
     public double getDano(){
         return (.2 * precisao) + super.getDano();
     }
-    
+
     @Override
-    public String toString(){
-        return "Arco";
+    public String toString() {
+        return "Arco{" + "dano=" + super.getDano() + '}';
     }
+    
+    
 }

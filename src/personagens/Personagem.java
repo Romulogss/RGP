@@ -1,5 +1,6 @@
 package personagens;
 
+
 /**
  *
  * @author Rômulo
@@ -21,6 +22,9 @@ public interface Personagem<T> {
 
     public abstract String getTipoDeArma();
     
+    public abstract double getDefesa();
+    
+    public abstract double atacar();
 
     @Override
     public String toString();

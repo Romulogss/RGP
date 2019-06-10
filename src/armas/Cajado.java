@@ -11,10 +11,12 @@ public class Cajado extends Arma{
     public double getDano(){
         return (.2 * magia) + super.getDano();
     }
-    
+
     @Override
-    public String toString(){
-        return "Cajado";
+    public String toString() {
+        return "Cajado{" + "dano=" + super.getDano() + '}';
     }
+    
+    
 
 }

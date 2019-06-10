@@ -12,8 +12,12 @@ public class Espada extends Arma {
     public double getDano() {
         return (.2 * corte) + super.getDano();
     }
+
     @Override
-    public String toString(){
-        return "Espada";
+    public String toString() {
+        return "Espada{" + "dano=" + super.getDano() + '}';
     }
+    
+        
+    
 }

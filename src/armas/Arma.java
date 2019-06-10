@@ -10,7 +10,7 @@ public abstract class Arma {
     private int cicloDeVida = 5;
 
     public double getDano() {
-        return dano;
+        return dano * .2;
     }
 
     public void usada() {
@@ -20,5 +20,12 @@ public abstract class Arma {
     public int getCicloDeVida() {
         return cicloDeVida;
     }
+
+    @Override
+    public String toString() {
+        return "Arma{" + "dano=" + getDano() +'}';
+    }
+    
+    
 
 }

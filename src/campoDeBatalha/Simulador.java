@@ -1,5 +1,6 @@
 package campoDeBatalha;
 
+import java.io.IOException;
 import java.util.Scanner;
 import personagens.Aprendiz;
 import personagens.Arqueiro;
@@ -62,17 +63,53 @@ public class Simulador {
         }
     }
 
-    public static void main(String[] args) {
+    public static void batalha(Personagem p1, Personagem p2) {
+        int contador = 0;
+        while (true) {
+            contador++;
+            if (contador < 5) {
+                p1.takeDemage(p2);
+                p2.takeDemage(p1);
+            } else {
+                System.out.println(p1.getNome());
+                p1.danoEspecial(p2.ataqueEspecial());
+                System.out.println(p2.getNome());
+                p2.danoEspecial(p1.ataqueEspecial());
+                contador = 0;
+            }
+            System.out.println("HP do personagem 1: " + p1.getPontosDeVida());
+            System.out.println("HP do personagem 2: " + p2.getPontosDeVida());
+            
+            if (p1.getPontosDeVida() <= 0 && p2.getPontosDeVida() <= 0) {
+                System.out.println("Deu empate!");
+                break;
+            }
+            if (p1.getPontosDeVida() <= 0) {
+                System.out.println(p1.getNome() + " morreu!");
+                System.out.println(p2.getNome() + " é o vencedor!");
+                break;
+            }
+            if (p2.getPontosDeVida() <= 0) {
+                System.out.println(p2.getNome() + " morreu!");
+                System.out.println(p1.getNome() + " é o vencedor!");
+                break;
+            }
+        }
+
+    }
+
+    public static void main(String[] args) throws IOException{
         String nome;
         int escolha;
         char loop;
+        Personagem personagem1, personagem2;
         Scanner ler = new Scanner(System.in);
         System.out.println("Jogador 1!");
         do {
             escolha = escolherClasse(ler);
             System.out.print("Escolha o nome do seu personagem: ");
             nome = ler.nextLine();
-            Personagem personagem1 = escolherPersonagem(nome, escolha);
+            personagem1 = escolherPersonagem(nome, escolha);
             System.out.println(personagem1);
             System.out.println("Deseja trocar de personagem?\n[S/N]");
             loop = ler.nextLine().toLowerCase().charAt(0);
@@ -83,13 +120,21 @@ public class Simulador {
             escolha = escolherClasse(ler);
             System.out.print("Escolha o nome do seu personagem: ");
             nome = ler.nextLine();
-            Personagem personagem2 = escolherPersonagem(nome, escolha);
+            personagem2 = escolherPersonagem(nome, escolha);
             System.out.println(personagem2);
             System.out.println("Deseja trocar de personagem?\n[S/N]");
             loop = ler.nextLine().toLowerCase().charAt(0);
         } while (loop == 's');
-        
-        
+
+        System.out.println("Personagens escolhidos");
+        System.out.println("Personagem 1: " + personagem1);
+        System.out.println("Personagem 2: " + personagem2);
+
+        System.out.println("A batalha irá começar!");
+        System.out.println("Pressione <Enter> para começar a batalha!.");
+        System.in.read();
+        batalha(personagem1, personagem2);
+        System.out.println("FIM DE JOGO!!!!!");
 
     }
 }
