@@ -10,7 +10,8 @@ public class Circulo extends Figura{
     public Circulo() {
     }
 
-    public Circulo(int raio) {
+    public Circulo(int raio, int coordenadaX, int coordenadaY) {
+        super(coordenadaX, coordenadaY);
         this.raio = raio;
     }
 
